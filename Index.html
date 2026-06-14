@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<title>2026 熊聲厭父子仨 大阪漫遊十五日</title>
+<style>
+:root { color-scheme: light; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { background:#fff !important; }
+body { font-family: 'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif; background:#fff !important; color:#111 !important; font-size:15px; line-height:1.8; }
+@media (prefers-color-scheme: dark) {
+  html { background:#fff !important; filter:none !important; }
+  body, body * { color:#111 !important; background-color:inherit; }
+  body { background:#fff !important; }
+  table td, table th { color:#111 !important; }
+  .box-info, .box-warn, .box-tip { color:#111 !important; }
+  #top-nav { background:#fff !important; }
+  #top-nav a { color:#555 !important; }
+  #cover { background:#fff !important; color:#111 !important; }
+  #cover h1, #cover .date, #cover .meta { color:#111 !important; }
+}
+a { color:#c0392b; }
+a:hover { text-decoration:underline; }
+
+/* NAV */
+#top-nav { position:sticky; top:0; background:#fff; border-bottom:1px solid #ddd; z-index:100; padding:0 20px; display:flex; align-items:center; gap:0; overflow-x:auto; scrollbar-width:none; }
+#top-nav::-webkit-scrollbar{display:none;}
+#top-nav a { display:block; font-size:12px; padding:12px 14px; white-space:nowrap; color:#555; text-decoration:none; border-bottom:2px solid transparent; }
+#top-nav a:hover { color:#111; border-bottom-color:#111; }
+
+/* LAYOUT */
+.wrap { max-width:820px; margin:0 auto; padding:0 20px; }
+
+/* COVER */
+#cover { text-align:center; padding:60px 20px 48px; border-bottom:2px solid #111; }
+#cover h1 { font-size:clamp(26px,5vw,44px); font-weight:900; letter-spacing:2px; margin-bottom:10px; }
+#cover .date { font-size:20px; color:#555; margin-bottom:16px; }
+#cover .meta { font-size:14px; color:#777; }
+
+/* PREFACE */
+#preface { padding:40px 20px; border-bottom:1px solid #ddd; }
+#preface p { margin-bottom:12px; }
+#preface .sign { font-style:italic; color:#555; margin-top:16px; }
+
+/* TOC */
+#toc { padding:40px 20px; border-bottom:1px solid #ddd; }
+#toc h2 { font-size:20px; font-weight:800; margin-bottom:20px; }
+#toc ol { list-style:none; }
+#toc li { padding:5px 0; border-bottom:1px dotted #ddd; display:flex; align-items:baseline; gap:8px; }
+#toc li:last-child { border-bottom:none; }
+#toc .toc-num { font-size:12px; color:#999; min-width:80px; }
+#toc a { color:#111; text-decoration:none; font-size:14px; }
+#toc a:hover { color:#c0392b; }
+
+/* CHAPTER */
+.chapter { padding:40px 0; border-bottom:1px solid #ddd; }
+.chapter h2 { font-size:20px; font-weight:800; margin-bottom:6px; padding-bottom:10px; border-bottom:2px solid #111; }
+.chapter .ch-meta { font-size:12px; color:#999; margin-bottom:24px; }
+.chapter h3 { font-size:16px; font-weight:700; margin:24px 0 12px; }
+.chapter h4 { font-size:14px; font-weight:700; margin:16px 0 8px; color:#555; }
+.chapter p { margin-bottom:12px; }
+.chapter ul, .chapter ol { margin:8px 0 12px 20px; }
+.chapter li { margin-bottom:6px; }
+
+/* TABLES */
+table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
+th { background:#111; color:#fff; padding:8px 10px; text-align:left; font-weight:600; }
+td { padding:8px 10px; border-bottom:1px solid #eee; vertical-align:top; }
+tr:last-child td { border-bottom:none; }
+tr:nth-child(even) td { background:#fafafa; }
+
+/* BOXES */
+.box-info { background:#f0f6ff; border-left:3px solid #3b82f6; padding:12px 16px; margin:14px 0; font-size:14px; border-radius:0 4px 4px 0; }
+.box-warn { background:#fffbeb; border-left:3px solid #f59e0b; padding:12px 16px; margin:14px 0; font-size:14px; border-radius:0 4px 4px 0; }
+.box-tip  { background:#f0fdf4; border-left:3px solid #22c55e; padding:12px 16px; margin:14px 0; font-size:14px; border-radius:0 4px 4px 0; }
+.box-info b, .box-warn b, .box-tip b { display:block; margin-bottom:4px; }
+
+/* TAGS */
+.tag { display:inline-block; font-size:11px; padding:1px 7px; border-radius:10px; border:1px solid #ddd; margin-left:4px; vertical-align:middle; }
+.tag-free { background:#dcfce7; border-color:#86efac; color:#166534; }
+.tag-warn { background:#fef9c3; border-color:#fde047; color:#854d0e; }
+
+/* SPOTS – link pills */
+.spot-links { display:flex; flex-wrap:wrap; gap:6px; margin:10px 0 14px; }
+.spot-links a { font-size:12px; padding:4px 10px; border:1px solid #ddd; border-radius:14px; color:#111; text-decoration:none; }
+.spot-links a:hover { background:#111; color:#fff; border-color:#111; }
+
+/* CHECKLIST */
+.checklist { list-style:none; margin:0; }
+.checklist li { display:grid; grid-template-columns:24px 1fr 90px; gap:8px; padding:7px 0; border-bottom:1px dotted #eee; font-size:13px; align-items:start; }
+.checklist li:last-child { border-bottom:none; }
+.ck { width:17px; height:17px; border:1.5px solid #ccc; border-radius:3px; display:flex; align-items:center; justify-content:center; font-size:10px; flex-shrink:0; margin-top:2px; }
+.ck.done { background:#111; border-color:#111; color:#fff; }
+.ck-who { font-size:11px; color:#888; }
+
+/* PACKING */
+.pack-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+@media(max-width:540px){ .pack-grid{grid-template-columns:1fr;} }
+.pack-col h4 { margin:0 0 8px; font-size:13px; }
+.pack-col ul { list-style:none; margin:0; }
+.pack-col li { font-size:13px; padding:3px 0; border-bottom:1px dotted #eee; }
+.pack-col li:last-child{border:none;}
+.highlight { font-weight:700; }
+
+/* OVERVIEW TABLE type badges */
+.badge { display:inline-block; font-size:10px; padding:2px 7px; border-radius:10px; }
+.badge-tour { background:#dcfce7; color:#166534; }
+.badge-work { background:#dbeafe; color:#1e40af; }
+.badge-move { background:#fee2e2; color:#991b1b; }
+
+footer { padding:32px 20px; text-align:center; font-size:12px; color:#aaa; border-top:1px solid #eee; margin-top:20px; }
+</style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<nav id="top-nav">
+  <a href="#cover">首頁</a>
+  <a href="#preface">序</a>
+  <a href="#toc">目錄</a>
+  <a href="#ch1">行程總覽</a>
+  <a href="#ch2">航班住宿</a>
+  <a href="#ch3">交通心法</a>
+  <a href="#ch4">天下茶屋生活圈</a>
+  <a href="#ch5">Day 1</a>
+  <a href="#ch6">Day 2</a>
+  <a href="#ch7">Day 3</a>
+  <a href="#ch8">Day 4</a>
+  <a href="#ch9">Day 5–7</a>
+  <a href="#ch10">Day 8</a>
+  <a href="#ch11">Day 9</a>
+  <a href="#ch12">Day 10–11</a>
+  <a href="#ch13">Day 12</a>
+  <a href="#ch14">Day 13</a>
+  <a href="#ch15">Day 14</a>
+  <a href="#ch16">Day 15</a>
+  <a href="#appA">預算</a>
+  <a href="#appB">待辦</a>
+  <a href="#appC">打包</a>
+  <a href="#appD">緊急聯絡</a>
+</nav>
+
+<!-- COVER -->
+<div id="cover" class="wrap">
+  <div class="meta">旅遊計劃書・資深導遊監修版</div>
+  <h1>熊聲厭父子仨<br>大阪漫遊十五日</h1>
+  <div class="date">2026.6.27 — 7.11</div>
+  <div class="meta">一場關於父子、城市與夏日祭典的長住旅行</div>
+  <div class="meta" style="margin-top:12px;">成員：雄（54）・笙（23）・硯（19）｜基地：大阪・天下茶屋</div>
+</div>
+
+<!-- PREFACE -->
+<div id="preface" class="wrap">
+  <div class="chapter">
+    <h2>序　寫在出發之前</h2>
+    <p>帶團三十年，我見過太多「七天五國」式的趕路行程，也見過真正懂得旅行的人——他們在一座城市住下來，早上買菜、傍晚散步，把自己活成半個在地人。這份計劃書屬於後者。</p>
+    <p>十五天，一座城，一間天下茶屋的民宿。三位男士——54 歲的父親雄、23 歲的笙、19 歲的硯——各自認領導遊職責，輪流帶路。中間穿插幾天居家上班日，白天工作、晚上探索大阪夜色，這正是「Workation（工作度假）」最理想的節奏。</p>
+    <p>大阪是一座「胃袋城市」，也是日本最有人情味的地方。這裡的店家會跟你聊天，章魚燒老闆會記得你昨天來過。選在 6 月底到 7 月初造訪，更能趕上大阪三大夏祭之首的「愛染祭」——這是內行人才知道的時間點。</p>
+    <p>本書按出發順序編排：先講行前準備與交通心法，再逐日展開十五天的行程細節、時刻表、交通方式與花費預估，每個景點都附上我的導覽筆記。請把它印出來帶著走，也留一份電子檔在手機裡。</p>
+    <p class="sign">旅行愉快。— 老導遊 敬上</p>
+  </div>
+</div>
+
+<!-- TOC -->
+<div id="toc" class="wrap">
+  <h2>目錄</h2>
+  <ol>
+    <li><span class="toc-num">第一章</span><a href="#ch1">行程總覽</a></li>
+    <li><span class="toc-num">第二章</span><a href="#ch2">航班與住宿</a></li>
+    <li><span class="toc-num">第三章</span><a href="#ch3">交通心法</a></li>
+    <li><span class="toc-num">第四章</span><a href="#ch4">天下茶屋生活圈：上班日生存指南</a></li>
+    <li><span class="toc-num">第五章</span><a href="#ch5">Day 1（6/27 六）出發日：飛向大阪</a></li>
+    <li><span class="toc-num">第六章</span><a href="#ch6">Day 2（6/28 日）難波區巡禮＋神戶半日</a></li>
+    <li><span class="toc-num">第七章</span><a href="#ch7">Day 3（6/29 一）周遊券 D1：梅田・道頓堀水陸空</a></li>
+    <li><span class="toc-num">第八章</span><a href="#ch8">Day 4（6/30 二）周遊券 D2：大阪城・港區展望</a></li>
+    <li><span class="toc-num">第九章</span><a href="#ch9">Day 5–7（7/1–7/3）居家上班日＋大阪之夜</a></li>
+    <li><span class="toc-num">第十章</span><a href="#ch10">Day 8（7/4 六）京都一日：千年古都速寫</a></li>
+    <li><span class="toc-num">第十一章</span><a href="#ch11">Day 9（7/5 日）天王寺區：新舊大阪的交界</a></li>
+    <li><span class="toc-num">第十二章</span><a href="#ch12">Day 10–11（7/6–7/7）連續居家上班日</a></li>
+    <li><span class="toc-num">第十三章</span><a href="#ch13">Day 12（7/8 三）堺市＋大正區：古墳・路面電車・小沖繩</a></li>
+    <li><span class="toc-num">第十四章</span><a href="#ch14">Day 13（7/9 四）宇治・奈良一日：平等院・千本鳥居</a></li>
+    <li><span class="toc-num">第十五章</span><a href="#ch15">Day 14（7/10 五）退房日：中之島散步→夜宿關西機場</a></li>
+    <li><span class="toc-num">第十六章</span><a href="#ch16">Day 15（7/11 六）回國日：從機場醒來，從容登機</a></li>
+    <li><span class="toc-num">附錄 A</span><a href="#appA">總預算試算</a></li>
+    <li><span class="toc-num">附錄 B</span><a href="#appB">行前待辦總表</a></li>
+    <li><span class="toc-num">附錄 C</span><a href="#appC">攜帶物品檢查表</a></li>
+    <li><span class="toc-num">附錄 D</span><a href="#appD">緊急聯絡與實用資訊</a></li>
+  </ol>
+</div>
+
+<!-- CH1 行程總覽 -->
+<div id="ch1" class="wrap">
+<div class="chapter">
+<h2>第一章　行程總覽</h2>
+<h3>1.1 旅程基本資料</h3>
+<table>
+<tr><td style="width:110px;font-weight:600;">旅程期間</td><td>2026/6/27（六）～ 2026/7/11（六），共 15 天（民宿 13 晚＋機場過夜 1 晚）</td></tr>
+<tr><td style="font-weight:600;">目的地</td><td>日本・大阪（含京都、奈良、宇治、神戶、堺市近郊）</td></tr>
+<tr><td style="font-weight:600;">成員</td><td>雄（54 歲）、笙（23 歲）、硯（19 歲）</td></tr>
+<tr><td style="font-weight:600;">住宿</td><td>Airbnb 民宿（天下茶屋）13 晚＋7/10 夜宿關西機場，民宿總價 NT$15,911</td></tr>
+<tr><td style="font-weight:600;">旅行型態</td><td>長住型自由行＋居家上班日（Workation）</td></tr>
+<tr><td style="font-weight:600;">導遊分工</td><td>雄：中之島、神戶、堺市｜笙：天王寺、難波、京都｜硯：周遊券兩日、奈良宇治</td></tr>
+</table>
+
+<h3>1.2 十五日行程一覽表</h3>
+<table>
+<tr><th style="width:60px;">日期</th><th style="width:40px;">星期</th><th>行程主題</th><th style="width:60px;">導遊</th><th style="width:70px;">型態</th></tr>
+<tr><td>6/27</td><td>六</td><td>出發日：TPE→KIX，入住天下茶屋</td><td>雄</td><td><span class="badge badge-move">移動日</span></td></tr>
+<tr><td>6/28</td><td>日</td><td>難波區巡禮＋神戶半日</td><td>笙／雄</td><td><span class="badge badge-tour">全日遊</span></td></tr>
+<tr><td>6/29</td><td>一</td><td>周遊券 D1：南區歷史 → 北區絕景 → 道頓堀夜遊</td><td>硯</td><td><span class="badge badge-tour">全日遊</span></td></tr>
+<tr><td>6/30</td><td>二</td><td>周遊券 D2：大阪城歷史 → 港區浪漫海景</td><td>硯</td><td><span class="badge badge-tour">全日遊</span></td></tr>
+<tr><td>7/1</td><td>三</td><td>居家上班｜晚：愛染祭（大阪三大夏祭）</td><td>—</td><td><span class="badge badge-work">上班＋夜遊</span></td></tr>
+<tr><td>7/2</td><td>四</td><td>居家上班｜晚：慶生晚宴</td><td>—</td><td><span class="badge badge-work">上班＋慶生</span></td></tr>
+<tr><td>7/3</td><td>五</td><td>居家上班｜晚：自由探索</td><td>—</td><td><span class="badge badge-work">上班日</span></td></tr>
+<tr><td>7/4</td><td>六</td><td>京都一日：清水寺・伏見稻荷</td><td>笙</td><td><span class="badge badge-tour">全日遊</span></td></tr>
+<tr><td>7/5</td><td>日</td><td>天王寺區：通天閣・新世界</td><td>笙</td><td><span class="badge badge-tour">全日遊</span></td></tr>
+<tr><td>7/6</td><td>一</td><td>居家上班｜晚：天神橋筋商店街</td><td>—</td><td><span class="badge badge-work">上班日</span></td></tr>
+<tr><td>7/7</td><td>二</td><td>居家上班｜晚：自由探索</td><td>—</td><td><span class="badge badge-work">上班日</span></td></tr>
+<tr><td>7/8</td><td>三</td><td>堺市＋大正區深度遊</td><td>雄</td><td><span class="badge badge-tour">全日遊</span></td></tr>
+<tr><td>7/9</td><td>四</td><td>宇治・奈良一日</td><td>硯</td><td><span class="badge badge-tour">全日遊</span></td></tr>
+<tr><td>7/10</td><td>五</td><td>退房→中之島區散步→晚間進駐機場過夜</td><td>雄</td><td><span class="badge badge-move">全日＋移動</span></td></tr>
+<tr><td>7/11</td><td>六</td><td>機場晨起→KIX T2 07:55 起飛回國</td><td>雄</td><td><span class="badge badge-move">移動日</span></td></tr>
+</table>
+<div class="box-tip">
+<b>💡 導遊筆記｜為什麼這份行程編得好</b>
+1. 鬆緊有度：全日遊與上班日交錯，避免「玩到第十天累垮」的常見失誤。<br>
+2. 區域集中：大阪市內按區塊規劃（難波、梅田、天王寺、中之島），不走回頭路。<br>
+3. 周遊券連用兩日，把高票價景點（展望台、遊船）集中消化，回本率最高。<br>
+4. 愛染祭（6/30～7/2）正好落在旅程中段，7/1 晚上去最熱鬧。
+</div>
+</div>
+</div>
+
+<!-- CH2 航班 -->
+<div id="ch2" class="wrap">
+<div class="chapter">
+<h2>第二章　航班與住宿</h2>
+<h3>2.1 航班資訊</h3>
+<h4>去程　2026/6/27（六）</h4>
+<table>
+<tr><td style="width:100px;font-weight:600;">航班</td><td>AirAsia X（亞航）D7378｜經濟艙｜空中巴士 A330-300</td></tr>
+<tr><td style="font-weight:600;">出發</td><td>15:40　台灣桃園國際機場（TPE）第一航廈</td></tr>
+<tr><td style="font-weight:600;">抵達</td><td>19:20　關西國際機場（KIX）第一航廈</td></tr>
+<tr><td style="font-weight:600;">訂位代號</td><td>E8Y8WV</td></tr>
+<tr><td style="font-weight:600;">托運行李</td><td>❗ 未購買托運——全員僅手提行李（7kg/件，登機箱尺寸限制 56×36×23cm）</td></tr>
+</table>
+<h4>回程　2026/7/11（六）</h4>
+<table>
+<tr><td style="width:100px;font-weight:600;">航班</td><td>樂桃航空（Peach）MM023｜經濟艙｜空中巴士 A320-212｜無餐點</td></tr>
+<tr><td style="font-weight:600;">出發</td><td>07:55　關西國際機場（KIX）第二航廈 ❗ 注意是 T2</td></tr>
+<tr><td style="font-weight:600;">抵達</td><td>09:55　台灣桃園國際機場（TPE）第一航廈</td></tr>
+<tr><td style="font-weight:600;">訂位代號</td><td>F36T7K</td></tr>
+<tr><td style="font-weight:600;">托運行李</td><td>已購 20kg × 3 件——回程可放心採購戰利品</td></tr>
+</table>
+<div class="box-warn">
+<b>⚠️ 導遊筆記｜兩個航班的關鍵提醒</b>
+▶ 去程無托運：行動電源必須手提（本來就規定），液體每瓶 ≤100ml 裝進透明夾鏈袋。剪刀、瑞士刀不能帶——到大阪的百元店再買即可。<br>
+▶ 回程 07:55 起飛＝最晚 05:55 前抵達 KIX T2。樂桃櫃台通常起飛前 2.5 小時開櫃、50 分鐘前關櫃。<br>
+▶ ✅ 已定案：7/10 為民宿退房日，當晚搭南海電鐵末班前班次直接進機場過夜（KIX 24 小時開放），清晨從容轉往 T2 報到。<br>
+▶ 機場過夜要點：T1 二樓出境大廳與北側有休息長椅；「KIX Airport Lounge」（Aeroplaza 2F）24 小時營業，提供躺椅、淋浴、飲料吧（約 ¥620/時或包夜方案），三人可輪流使用。<br>
+▶ KIX T2 是樂桃專用航廈，與 T1 之間有免費接駁巴士（約 7～10 分鐘），南海電鐵只到 T1，務必預留接駁時間。
+</div>
+
+<h3>2.2 住宿</h3>
+<table>
+<tr><td style="width:100px;font-weight:600;">型態</td><td>Airbnb 整套民宿</td></tr>
+<tr><td style="font-weight:600;">位置</td><td>天下茶屋一帶（西成區／阿倍野區交界）</td></tr>
+<tr><td style="font-weight:600;">入住</td><td>2026/6/27 入住 ～ 7/10 退房，共 13 晚（7/10 晚改宿關西機場）</td></tr>
+<tr><td style="font-weight:600;">總價</td><td>NT$15,911（三人平均每人每晚約 NT$379，超值）</td></tr>
+<tr><td style="font-weight:600;">訂房連結</td><td>Airbnb 房源編號 1600682540498268603（詳見手機 App）</td></tr>
+</table>
+<h4>天下茶屋——老導遊眼中的完美基地</h4>
+<p>很多遊客只認得難波、梅田，但住過大阪的人都知道，天下茶屋才是長住客的天堂。理由有三：</p>
+<ul>
+<li><strong>交通樞紐：</strong>南海本線「空港急行」直達關西機場（約 40 分鐘、¥970），不用拖行李轉車；同站還有地下鐵堺筋線直通動物園前、日本橋、北濱，4 分鐘到難波商圈。</li>
+<li><strong>物價親民：</strong>周邊是老派下町，超市（玉出、LIFE）、商店街物價比觀光區便宜兩三成，長住自炊最划算。</li>
+<li><strong>在地風情：</strong>天下茶屋本身就是昭和氛圍滿點的散步區，傍晚的商店街、銭湯、立吞居酒屋，是觀光客看不到的大阪日常。</li>
+</ul>
+</div>
+</div>
+
+<!-- CH3 交通 -->
+<div id="ch3" class="wrap">
+<div class="chapter">
+<h2>第三章　交通心法</h2>
+<h3>3.1 機場 ⇄ 市區</h3>
+<table>
+<tr><th>路線</th><th>方式</th><th>票價／人</th><th>說明</th></tr>
+<tr><td>KIX → 天下茶屋</td><td>南海本線 空港急行</td><td>約 ¥970</td><td>直達不轉車，約 40～45 分，每 10～15 分一班</td></tr>
+<tr><td>KIX → 天下茶屋</td><td>南海 特急 Rapi:t</td><td>約 ¥1,490</td><td>全車指定席、快 5～10 分，藍色鐵人造型很好拍</td></tr>
+<tr><td>天下茶屋 → KIX</td><td>南海本線 空港急行</td><td>約 ¥970</td><td>回程注意首班車時間（見第二章提醒）</td></tr>
+</table>
+<div class="box-info">✅ 行前待辦第 8 項已確認：關西機場交通不需預先購票，抵達後在南海電鐵 KIX 站售票機購買即可，刷 ICOCA 也通。6/27 晚上 19:20 落地，入境＋領行李抓 1～1.5 小時，搭 21:00 前後的空港急行，22:00 前可進民宿。</div>
+
+<h3>3.2 三張卡片走天下</h3>
+<table>
+<tr><td style="width:130px;font-weight:600;">ICOCA（西瓜卡同類）</td><td>關西版交通 IC 卡，手機 Apple Pay 可直接加值開卡（待辦第 9 項：每人儲值 ¥5,000）。地鐵、JR、私鐵、便利商店通用。</td></tr>
+<tr><td style="font-weight:600;">大阪周遊券</td><td>【2026 年全面數位化】在台灣出發前於 Klook 或 KKday 購買「2 日券電子票 × 3」（¥5,500/人），購後登入 Surutto QRtto 系統，6/29 早上出門點「開始使用」啟動。搭地鐵掃鐵路 QR Code；進景點掃設施 QR Code 出示驗證畫面即可。⚠️ 梅田空中庭園免費入場限 15:00 前（15:00 後打 9 折）。2 日券需連續兩天：6/29～30 使用。</td></tr>
+<tr><td style="font-weight:600;">信用卡＋行動支付</td><td>全支付／街口支付已可在日本部分商店掃碼（待辦第 11 項），但別依賴——日本仍有大量現金主義小店，現金 15 萬日圓（待辦第 10 項）是正確配置。</td></tr>
+</table>
+
+<h3>3.3 市內移動速查</h3>
+<table>
+<tr><th>從天下茶屋出發</th><th>路線</th><th>時間／費用</th></tr>
+<tr><td>難波・道頓堀</td><td>堺筋線→恵美須町轉或南海至難波</td><td>約 5～10 分／¥190～240</td></tr>
+<tr><td>梅田</td><td>御堂筋線（動物園前轉乘）</td><td>約 20 分／¥290</td></tr>
+<tr><td>天王寺</td><td>堺筋線＋徒步或阪堺電車</td><td>約 10～15 分／¥190</td></tr>
+<tr><td>京都（河原町）</td><td>地鐵→淀屋橋→京阪特急</td><td>約 70 分／約 ¥700</td></tr>
+<tr><td>奈良</td><td>難波→近鐵奈良線快速急行</td><td>約 50 分／¥680</td></tr>
+<tr><td>神戶（三宮）</td><td>難波→阪神難波線直通</td><td>約 45 分／¥420</td></tr>
+</table>
+<div class="box-tip">
+<b>💡 導遊心法｜大阪交通三原則</b>
+1. 能走路就走路：道頓堀到心齋橋、黑門市場到日本橋，都是 10 分鐘內的散步距離，地圖上看起來遠，實際很近。<br>
+2. 周遊券日「貪心一點」，非周遊券日「佛系一點」：周遊券日把付費景點塞滿，其他日子多安排免費的神社、商店街。<br>
+3. 晚上 8 點後的大阪另有一番風景：居家上班日下班後，戎橋的霓虹、新世界的串炸、梅田的夜景都營業到深夜。
+</div>
+</div>
+</div>
+
+<!-- CH4 天下茶屋生活圈 -->
+<div id="ch4" class="wrap">
+<div class="chapter">
+<h2>第四章　天下茶屋生活圈：上班日生存指南</h2>
+<p>長住旅行最迷人的部分，就是把民宿周邊活成自己的生活圈。本章專為 7/1、7/2、7/3、7/6、7/7 五個居家上班日設計（上班時間 09:30–18:30）——上班前的早餐、工作中的咖啡與午餐、下班後的銭湯與晚餐，全部在民宿步行 10 分鐘內解決。以下店家皆為實地評價 4 星以上的在地名店。</p>
+
+<h3>4.1 上班前：早餐＋咖啡</h3>
+<table>
+<tr><th>店名</th><th>評價</th><th>開門</th><th>導遊筆記</th></tr>
+<tr><td>Bell Tree Tengachaya</td><td>★4.8</td><td>07:30</td><td>首選！老夫婦經營的昭和喫茶店，現做厚蛋三明治、蛋包飯（底下藏炒飯），老闆娘英文流利，像在阿嬤家吃早餐</td></tr>
+<tr><td>壱心茶屋</td><td>★4.5</td><td>09:00</td><td>天下茶屋站正對面，母子經營，手沖咖啡＋吐司套餐超值，紅豆咖啡是隱藏招牌（週三休・現金）</td></tr>
+<tr><td>T&K COFFEE</td><td>★4.3</td><td>07:00</td><td>車站內最早開，モーニング套餐 ¥480 起，趕時間首選</td></tr>
+<tr><td>Coffee Rumba</td><td>★4.3</td><td>07:00</td><td>阪堺電車軌道旁老喫茶店，10 種早餐套餐，邊吃邊看路面電車叮叮經過（週三休）</td></tr>
+<tr><td>ポンプパリジェンヌ</td><td>★4.5</td><td>06:30</td><td>老職人麵包店，全區最早開！前一晚或清晨買齊隔天早餐，炸紅豆麵包必買（週日休）</td></tr>
+</table>
+
+<h3>4.2 上班中：外帶咖啡＋午餐（09:30 上班，10:30 咖啡休息）</h3>
+<table>
+<tr><th>店名</th><th>評價</th><th>營業</th><th>導遊筆記</th></tr>
+<tr><td>coffee stand TENGACHA</td><td>★4.4</td><td>09:30–18:00</td><td>文青咖啡站，拿鐵拉花一流（天鵝級），10:30 休息時間外帶回民宿配工作正好；抹茶拿鐵也強</td></tr>
+<tr><td>瓢正</td><td>★4.7</td><td>11:00–15:00</td><td>午餐首選！阿公阿完經營的迷你定食屋，份量大價格佛，咖哩烏龍麵被外國客評「日本第一」（週一休）</td></tr>
+<tr><td>つるまる烏龍麵</td><td>★3.5</td><td>07:00–21:00</td><td>天下茶屋站舍內，¥400 起 3 分鐘上桌，午休 30 分鐘也來得及，朝烏龍也讚</td></tr>
+<tr><td>九苑酒家</td><td>—</td><td>11:30–23:00</td><td>中華食堂，¥500 外帶便當，上班日囤午餐神器，菜色每天看櫥窗挑</td></tr>
+<tr><td>東明飯店</td><td>★3.8</td><td>11:30–15:00</td><td>下町中華老店，炒麵、煎餃出色，午晚餐皆可（週一休）</td></tr>
+</table>
+
+<h3>4.3 下班後：銭湯＋晚餐＋散步（18:30 下班後）</h3>
+<h4>先泡澡——天下茶屋的正確下班儀式</h4>
+<table>
+<tr><th>銭湯</th><th>營業</th><th>導遊筆記</th></tr>
+<tr><td>天水湯 Tensui-yu ★4.4</td><td>12:30–24:00（週三休）</td><td>¥600，有茶湯、碳酸泉、三溫暖＋冷水池，店主以柴犬「ten」命名，對外國人超友善，會講解禮儀</td></tr>
+<tr><td>New National Onsen ★4.2</td><td>12:30–25:00（週五休）</td><td>開到凌晨 1 點的備案，藥湯每週換色，氣氛社區感十足</td></tr>
+</table>
+<p>銭湯小知識：入浴 ¥600 不含沐浴用品，小毛巾自備（攜帶清單裡有），沐浴乳現場 ¥40 起可買。入池前必須先在洗澡區洗淨全身——這是鐵則。</p>
+
+<h4>再吃晚餐</h4>
+<table>
+<tr><th>店家</th><th>營業</th><th>導遊筆記</th></tr>
+<tr><td>食堂メトロ ★4.5</td><td>週五～日 18:00–23:00</td><td>香料咖哩名店，只開週末晚上——剛好接你們的週五上班日！酒粕豆乳綠咖哩是創意傑作</td></tr>
+<tr><td>東明飯店 ★3.8</td><td>17:10–21:00（週一休）</td><td>糖醋肉＋煎餃配啤酒，下町中華的標準幸福</td></tr>
+<tr><td>難波・道頓堀</td><td>至深夜</td><td>地鐵 5 分鐘就到，法善寺横丁、戎橋夜景隨時候補</td></tr>
+</table>
+
+<h4>飯後散步路線</h4>
+<ul>
+<li><strong>北天下茶屋昭和散步：</strong>阪堺電車沿線的老商店街，傍晚最有味道，木造長屋、貓、燈籠居酒屋——順便搭一段 ¥230 路面電車當散心。</li>
+<li><strong>聖天山公園・天下茶屋跡：</strong>地名由來之地——豐臣秀吉往住吉參拜途中在此喝茶，故名「天下（人的）茶屋」。小公園裡藏著這段歷史碑。</li>
+</ul>
+
+<h3>4.4 上班週實戰節奏表</h3>
+<table>
+<tr><td style="width:100px;font-weight:600;">09:30 上班</td><td>爸爸開始居家上班，笙硯準備出門</td></tr>
+<tr><td style="font-weight:600;">10:00 出發</td><td>兩個小孩出門自由行（詳見 4.6 節）</td></tr>
+<tr><td style="font-weight:600;">10:30 咖啡休息</td><td>走 3 分鐘 TENGACHA 外帶拿鐵，順便離開螢幕伸展</td></tr>
+<tr><td style="font-weight:600;">12:00 午休</td><td>瓢正定食（推）／つるまる烏龍（快）／九苑便當（省）</td></tr>
+<tr><td style="font-weight:600;">18:00 下班前</td><td>先去天水湯泡澡 30 分鐘，把工作蒸掉</td></tr>
+<tr><td style="font-weight:600;">18:30 下班</td><td>笙硯返回天下茶屋，全家集合</td></tr>
+<tr><td style="font-weight:600;">19:00 晚餐</td><td>週五食堂メトロ咖哩；其他天東明飯店或進難波</td></tr>
+<tr><td style="font-weight:600;">21:00 散步</td><td>北天下茶屋商店街或法善寺横丁，回民宿前買明天早餐</td></tr>
+</table>
+<div class="box-warn">
+<b>⚠️ 導遊提醒｜本區三大注意事項</b>
+1. 現金主義：這區老店多半只收現金，上班日口袋備 ¥3,000。<br>
+2. 週三魔咒：壱心茶屋、Coffee Rumba、天水湯全休週三 → 7/1（三）早餐改 Bell Tree、泡湯改 New National Onsen（而且當晚你們要去愛染祭，泡湯可挪 7/2）。<br>
+3. 各店規模小、店主年長，出餐慢是常態——這正是下町的節奏，把急躁留在台北。
+</div>
+
+<h3>4.5 超市與購物攻略</h3>
+<h4>超市（自炊＋宵夜補給）</h4>
+<table>
+<tr><th>店家</th><th>營業時間</th><th>導遊筆記</th></tr>
+<tr><td>イズミヤ Qanat Mall 天下茶屋店</td><td>9:00–24:00</td><td>車站直結購物中心，主力超市！生鮮、熟食、壽司便當齊全，同棟還有藥妝、麵包店、百元店</td></tr>
+<tr><td>業務スーパー 天下茶屋駅前店</td><td>9:00–21:00</td><td>站前批發超市，全區最便宜，冷凍食品、大包裝食材、泡麵掃貨點，自炊省錢神器</td></tr>
+<tr><td>スーパー玉出 天下茶屋店</td><td>24 小時</td><td>大阪傳奇霓虹超市！半夜便當、啤酒靠它，熟食出名地便宜（步行約 10 分）</td></tr>
+<tr><td>LIFE 西天下茶屋店</td><td>9:00–24:00</td><td>品質型超市，蔬果肉品較好——7/2 慶生壽喜燒食材推薦來這買</td></tr>
+</table>
+<h4>藥妝＋百元店（伴手禮戰場）</h4>
+<table>
+<tr><th>店家</th><th>營業時間</th><th>導遊筆記</th></tr>
+<tr><td>ダイコクドラッグ 天下茶屋店</td><td>9:05–22:50</td><td>站旁大國藥妝，藥妝伴手禮比道頓堀便宜，可退稅</td></tr>
+<tr><td>Ebisu Market ★4.1</td><td>9:05–22:00</td><td>大國藥妝隔壁的百元雜貨，在地評價「比唐吉訶德便宜」</td></tr>
+<tr><td>ワッツ（とれび天下茶屋內）</td><td>9:00–21:00</td><td>站前百元店，行李袋、收納、晾衣夾等長住小物</td></tr>
+<tr><td>DAISO 花園南店</td><td>9:00–21:00</td><td>大型大創，回程打包的壓縮袋、緩衝材來這補</td></tr>
+</table>
+<div class="box-tip">
+<b>💡 導遊採買策略五則</b>
+1. 平日自炊：業務スーパー囤底料 ＋ Qanat 買生鮮熟食。<br>
+2. 晚上 8 點後是超市便當貼半價標籤的黃金時段——上班日晚餐神器。<br>
+3. 深夜嘴饞：玉出 24 小時永遠在。<br>
+4. 藥妝伴手禮別在道頓堀人擠人，回天下茶屋的大國藥妝慢慢買，7/10 退房日當天採購最順。<br>
+5. 業務スーパー與玉出部分只收現金，結帳前先確認。
+</div>
+
+<h3>4.6 笙・硯上班日自由行</h3>
+<p>爸爸居家上班、兩個小子自由放風。以下是五個上班日各自的行程建議，距離天下茶屋都在 30 分鐘內，晚上準時回來一起吃晚餐。</p>
+<h4>7/1（三）電器・動漫・美村掃街</h4>
+<table>
+<tr><th style="width:70px;">時間</th><th>行程</th><th>說明</th></tr>
+<tr><td>10:00</td><td>天下茶屋 → 日本橋電電城</td><td>堺筋線直達，約 5 分</td></tr>
+<tr><td>10:30</td><td><a href="https://www.nipponbashi-navi.com/" target="_blank">日本橋電電城（Denden Town）</a> ★4.2</td><td>動漫、扭蛋、中古遊戲機一條街，硯的主場。Surugaya 中古店比台灣便宜很多</td></tr>
+<tr><td>13:00</td><td>電電城午餐後步行往心齋橋</td><td>約 15 分徒步</td></tr>
+<tr><td>13:30</td><td><a href="https://osaka.letsgojp.com/archives/79832/" target="_blank">美國村（American Village）</a></td><td>古著、街頭潮牌、塗鴉廣場，Big Step 商場地下有滑板場＋彈珠機</td></tr>
+<tr><td>15:00</td><td>心齋橋筋商店街 ★4.3</td><td>日本最熱鬧購物拱廊，逛到腳痠為止</td></tr>
+<tr><td>18:00</td><td>返回天下茶屋集合晚餐</td><td></td></tr>
+</table>
+<h4>7/2（四）SPAWORLD 世界溫泉主題樂園</h4>
+<table>
+<tr><th style="width:70px;">時間</th><th>行程</th><th>說明</th></tr>
+<tr><td>11:00</td><td>天下茶屋 → 動物園前</td><td>地鐵堺筋線，約 3 分</td></tr>
+<tr><td>11:30</td><td><a href="https://www.spaworld.co.jp/tw/" target="_blank">SPAWORLD</a> ★4.0（24h）</td><td>門票約 ¥1,500。歐洲區羅馬浴場＋芬蘭桑拿；亞洲區暹羅浴＋波斯浴；室內泳池、滑水道一票玩到底</td></tr>
+<tr><td>17:00</td><td>新世界串炸晚餐順便</td><td>就在 SPAWORLD 旁邊，醬汁禁二次沾！</td></tr>
+<tr><td>18:30</td><td>返回天下茶屋</td><td></td></tr>
+</table>
+<div class="box-warn">⚠️ SPAWORLD 採區域輪替制（歐洲區與亞洲區每月互換男女），入場前官網確認當月配置。毛巾、沐浴用品館內有售。</div>
+<h4>7/3（五）海遊館＋天保山港區</h4>
+<table>
+<tr><th style="width:70px;">時間</th><th>行程</th><th>說明</th></tr>
+<tr><td>10:00</td><td>天下茶屋 → 大阪港站</td><td>地鐵中央線（難波轉乘），約 35 分</td></tr>
+<tr><td>10:45</td><td><a href="https://www.kaiyukan.com/language/tw/" target="_blank">大阪海遊館（Kaiyukan）</a> ★4.5</td><td>門票 ¥2,700。全球最大級水族館，鯨鯊「海」與「遊」的 8 層樓環繞水槽，慢慢逛需 2 小時</td></tr>
+<tr><td>13:00</td><td>Tempozan Market Place 午餐</td><td>海遊館旁購物中心</td></tr>
+<tr><td>14:30</td><td>天保山摩天輪・港區散步</td><td>摩天輪已含在周遊券 D2，但若沒搭到可現場買</td></tr>
+<tr><td>16:00</td><td>Legoland Discovery Center（可選）</td><td>門票另計，視興趣</td></tr>
+<tr><td>18:00</td><td>返回天下茶屋</td><td></td></tr>
+</table>
+<h4>7/6（一）中崎町古著＋梅田文青掃街</h4>
+<table>
+<tr><th style="width:70px;">時間</th><th>行程</th><th>說明</th></tr>
+<tr><td>11:00</td><td>天下茶屋 → 梅田</td><td>御堂筋線，約 20 分</td></tr>
+<tr><td>11:30</td><td>Grand Front Osaka 紀伊國屋書店 6F</td><td>設計書、音樂雜誌；TSUTAYA Books 9F Lounge 插座無限飲料</td></tr>
+<tr><td>13:00</td><td>梅田 → 中崎町</td><td>地鐵谷町線一站，約 3 分</td></tr>
+<tr><td>13:30</td><td>古着屋 EDEN ★5.0</td><td>Dior、Burberry 超低價中古精品，三層樓挖寶（13:00 開）</td></tr>
+<tr><td>14:30</td><td>古着屋 MUMU ★5.0</td><td>upcycle 改造服飾天堂，三層樓（13:00 開）</td></tr>
+<tr><td>15:30</td><td>olfe.vintage ★4.9</td><td>Vintage Tee 專門店（13:00 開）</td></tr>
+<tr><td>16:30</td><td>disk union 大阪 ★4.2</td><td>中古 CD＋黑膠，R&B/Soul/Indie 齊全，¥500 起挖寶</td></tr>
+<tr><td>17:30</td><td>Time Bomb Records ★4.3（美村方向）</td><td>Punk／Indie 獨立廠牌黑膠聖地</td></tr>
+<tr><td>19:00</td><td>難波 Taito Station 電玩收尾（至深夜）</td><td>抓娃娃機、音遊、格鬥遊戲</td></tr>
+</table>
+<div class="box-warn">⚠️ 中崎町古著店多下午 1 點才開、晚 7～8 點關，上午先梅田書店，下午再移動節奏最順。</div>
+<h4>7/7（二）SPAWORLD 或自選</h4>
+<p>7/2 已去過 SPAWORLD 的話，改為以下任選：</p>
+<table>
+<tr><th>選項</th><th>說明</th></tr>
+<tr><td>難波 Parks 屋頂花園＋逛街</td><td>難波 Parks ★4.0，11F 屋頂綠地視野絕佳，同棟購物逛一天</td></tr>
+<tr><td>心齋橋補貨＋美村深度逛</td><td>7/1 沒逛完的繼續，下午堂島滾石唱片行</td></tr>
+<tr><td>重回電電城掃貨</td><td>7/1 沒搜刮夠的回馬槍，扭蛋補購</td></tr>
+<tr><td>在天下茶屋附近自由發呆</td><td>去北天下茶屋老商店街、泡銭湯、超市採買，輕鬆日</td></tr>
+</table>
+<div class="box-tip">
+<b>💡 父子聯繫原則</b>
+1. LINE 群組即時回報位置：出發、到景點、吃飯、準備回程各回一次；18:30 前返回天下茶屋，一起吃晚餐。<br>
+2. 集合預設點：天下茶屋站南海電鐵剪票口外，任何時間若失聯就在這等。<br>
+3. 每人口袋備 ¥3,000 現金，緊急時打車（Uber Japan App 可叫計程車）。<br>
+4. 爸爸 09:30–18:30 上班中不一定接電話——非緊急請 LINE 文字，緊急才打電話兩次；18:30 後自由。
+</div>
+</div>
+</div>
+
+<!-- CH5 Day1 -->
+<div id="ch5" class="wrap"><div class="chapter">
+<h2>第五章　Day 1（6/27 六）出發日：飛向大阪</h2>
+<table><tr><td style="width:80px;font-weight:600;">主題</td><td>台北 → 關西機場 → 天下茶屋入住</td></tr><tr><td style="font-weight:600;">導遊</td><td>雄</td></tr><tr><td style="font-weight:600;">步行量</td><td>★☆☆☆☆（移動日）</td></tr></table>
+<table>
+<tr><th style="width:65px;">時間</th><th>行程</th><th>交通／備註</th></tr>
+<tr><td>12:30</td><td>桃園機場 T1 集合</td><td>提早 3 小時，亞航櫃台常排隊</td></tr>
+<tr><td>12:45</td><td>⚠️ 上飛機前完成 eSIM 安裝</td><td>三人各自手機：設定 → 行動網路 → 新增方案 → 掃 eSIM QR Code。安裝後先關閉數據漫遊，等落地後再開啟</td></tr>
+<tr><td>13:00</td><td>辦理登機、安檢、出境</td><td>全員手提行李，注意液體規定</td></tr>
+<tr><td>14:30</td><td>登機門候機、機場午餐</td><td>亞航機上餐須預訂，建議先吃</td></tr>
+<tr><td>15:40</td><td>D7378 起飛</td><td>飛行約 2 小時 40 分</td></tr>
+<tr><td>19:20</td><td>抵達 KIX T1，開啟 eSIM 數據漫遊</td><td>下機後手機開行動數據 → 選 Docomo 方案 → 網路自動連線，入境排隊時網路就通了</td></tr>
+<tr><td>20:30</td><td>入境完成，南海電鐵 KIX 站</td><td>購票或刷 ICOCA，空港急行月台</td></tr>
+<tr><td>21:00</td><td>搭乘空港急行往難波方向</td><td>天下茶屋站下車，約 40 分</td></tr>
+<tr><td>21:50</td><td>抵達天下茶屋，徒步至民宿</td><td>依房東指示自助入住</td></tr>
+<tr><td>22:30</td><td>便利商店補給、就寢</td><td>明天開始正式玩！</td></tr>
+</table>
+<h3>導遊筆記</h3>
+<p>落地第一晚的重點只有兩個字：順暢。三個步驟確保入境零卡關：第一，在台灣機場出發前完成 eSIM 安裝（掃 QR Code），落地後開啟數據漫遊，下機排隊時網路就通了；第二，入境前在機上把 Visit Japan Web 的 QR Code 打開截圖（待辦第 12 項），海關不用現場開手機找；第三，南海電鐵站就在 T1 航廈連通橋對面，跟著「南海電車 Nankai」指標走即可。第一晚別排行程，到民宿放好行李，去樓下便利商店買瓶飲料和明天早餐，就是完美的 Day 1。</p>
+<table><tr><th>項目</th><th>說明</th><th>預估費用</th></tr>
+<tr><td>機場快線（台灣端）</td><td>依出發方式</td><td>約 NT$500</td></tr>
+<tr><td>南海空港急行</td><td>¥970 × 3</td><td>¥2,910</td></tr>
+<tr><td>晚餐＋便利商店補給</td><td>飯糰、飲料</td><td>約 ¥3,000</td></tr>
+<tr><td><strong>合計（三人）</strong></td><td></td><td><strong>約 ¥5,900＋NT$500</strong></td></tr>
+</table>
+</div></div>
+
+<!-- CH6 Day2 -->
+<div id="ch6" class="wrap"><div class="chapter">
+<h2>第六章　Day 2（6/28 日）難波區巡禮＋神戶半日</h2>
+<table><tr><td style="width:80px;font-weight:600;">主題</td><td>上午：難波下町漫步｜下午：神戶異人館・鐵人 28 號</td></tr><tr><td style="font-weight:600;">導遊</td><td>笙（難波）／雄（神戶）</td></tr><tr><td style="font-weight:600;">步行量</td><td>★★★★☆（約 15,000 步）</td></tr></table>
+<div class="spot-links">
+<a href="https://osaka.letsgojp.com/archives/81302/" target="_blank">難波八坂神社</a>
+<a href="https://osaka.letsgojp.com/archives/103506/" target="_blank">黑門市場</a>
+<a href="https://osaka.letsgojp.com/archives/79831/" target="_blank">千日前道具屋筋</a>
+<a href="https://gogojp.tw/kobe-ijinkan/" target="_blank">北野異人館</a>
+<a href="https://osaka.letsgojp.com/archives/100254/" target="_blank">鐵人 28 號公園</a>
+</div>
+<table><tr><th style="width:65px;">時間</th><th>行程</th><th>交通／備註</th></tr>
+<tr><td>08:30</td><td>民宿出發 → 難波八坂神社</td><td>地鐵或徒步＋南海，約 15 分</td></tr>
+<tr><td>09:00</td><td>難波八坂神社參拜</td><td>巨大獅子頭殿，30 分鐘</td></tr>
+<tr><td>09:45</td><td>木津市場</td><td>在地批發市場，吃早午餐</td></tr>
+<tr><td>10:45</td><td>千日前道具屋筋商店街</td><td>廚具天堂，買伴手禮好點</td></tr>
+<tr><td>11:30</td><td>黑門市場午餐</td><td>海鮮丼、和牛串、現切水果</td></tr>
+<tr><td>13:00</td><td>日本橋電器街（電電城）</td><td>動漫、電器，笙硯的主場</td></tr>
+<tr><td>14:30</td><td>難波 → 阪神電車往神戶三宮</td><td>阪神難波線直通，約 45 分</td></tr>
+<tr><td>15:30</td><td>北野異人館街散步</td><td>風見雞館、萌黃館擇一入內</td></tr>
+<tr><td>17:00</td><td>新長田・鐵人 28 號公園</td><td>三宮轉 JR 至新長田，15 分</td></tr>
+<tr><td>18:30</td><td>三宮晚餐：神戶牛或南京町中華街</td><td>預算高低自選</td></tr>
+<tr><td>20:30</td><td>阪神電車返回大阪</td><td>約 21:30 回到民宿</td></tr>
+</table>
+<h3>景點導覽</h3>
+<p><strong>難波八坂神社｜</strong>社區裡突然出現一顆高 12 公尺的巨大獅子頭，嘴巴就是舞台——這是大阪最具視覺衝擊力的神社。獅子大口據說能「吞噩運、招勝運」，考生與求職者特別愛來。清晨人少，是拍照黃金時段。</p>
+<p><strong>木津市場｜</strong>比黑門市場早一百年的「大阪的廚房元祖」，主要做批發生意，觀光客少、價格實在。週日部分店休，但場內食堂的玉子燒和關東煮仍值得一試。</p>
+<p><strong>千日前道具屋筋｜</strong>150 公尺的街上全是餐廚道具：章魚燒鐵盤、職人菜刀、食物模型。買一支大阪燒鏟回家，是最有「實用靈魂」的伴手禮。</p>
+<p><strong>黑門市場｜</strong>觀光化但依然精彩的美食市場。導遊建議：邊走邊吃以 2～3 樣為限（海膽、和牛串、豆乳甜甜圈），留胃給晚上的神戶。</p>
+<p><strong>北野異人館｜</strong>明治時代外國商人聚居的山手洋館群。坡道有點陡，但風見雞館前的廣場視野極好。全部入館要花不少錢，挑一兩館精看即可。</p>
+<p><strong>鐵人 28 號｜</strong>高 15.6 公尺的實體大鋼鐵巨人，矗立在新長田站前廣場——這是阪神大地震後重建的精神象徵。免費參觀，黃昏逆光時拍出來最有魄力。</p>
+<table><tr><th>項目</th><th>說明</th><th>預估費用</th></tr>
+<tr><td>市內交通＋大阪神戶往返</td><td>ICOCA 扣款 約¥1,500/人</td><td>¥4,500</td></tr>
+<tr><td>異人館門票</td><td>風見雞館等擇一二館</td><td>約 ¥1,500～3,000</td></tr>
+<tr><td>三餐＋市場小吃</td><td>¥3,500/人</td><td>約 ¥10,500</td></tr>
+<tr><td><strong>合計（三人）</strong></td><td></td><td><strong>約 ¥17,000～19,000</strong></td></tr>
+</table>
+</div></div>
+
+<!-- CH7 Day3 -->
+<div id="ch7" class="wrap"><div class="chapter">
+<h2>第七章　Day 3（6/29 一）周遊券 D1：南區歷史 → 北區絕景 → 道頓堀夜遊</h2>
+<table><tr><td style="width:80px;font-weight:600;">主題</td><td>四天王寺 → 通天閣 → 梅田空中庭園 → 難波心齋橋 → 道頓堀水上觀光船</td></tr><tr><td style="font-weight:600;">導遊</td><td>硯</td></tr><tr><td style="font-weight:600;">票券</td><td>大阪周遊券 2 日券（第 1 日）</td></tr></table>
+<div class="spot-links">
+<a href="https://gogojp.tw/shitennoji/" target="_blank">四天王寺 <span class="tag tag-free">免費</span></a>
+<a href="https://www.bring-you.info/zh-tw/tsutenkaku" target="_blank">通天閣 <span class="tag tag-free">免費</span></a>
+<a href="https://travelpark.tw/umeda_sky_building/" target="_blank">梅田空中庭園 <span class="tag tag-warn">免費・限15:00前</span></a>
+<a href="https://www.ipponmatsu.co.jp/cruise/tombori.html" target="_blank">道頓堀遊船 <span class="tag tag-free">免費・現場購票</span></a>
+</div>
+<table><tr><th style="width:65px;">時間</th><th>行程</th><th>交通／備註</th></tr>
+<tr><td>09:00</td><td>四天王寺（中心伽藍、本坊庭園）</td><td>周遊券免費，谷町線四天王寺前夕陽丘</td></tr>
+<tr><td>10:15</td><td>通天閣（展望台、Tower Slider、Dive & Walk）</td><td>周遊券免費（原價 ¥1,200）</td></tr>
+<tr><td>13:00</td><td>午餐、搭車前往梅田</td><td>御堂筋線往北約 20 分</td></tr>
+<tr><td>13:40</td><td>梅田藍天大廈 空中庭園展望台</td><td>周遊券免費 ⚠️ 務必於 15:00 前入場</td></tr>
+<tr><td>15:00</td><td>抵達難波</td><td>⚠️ 抵達後先去太左衛門橋船着場現場劃位晚上遊船班次（無法預約，現場購票）</td></tr>
+<tr><td>15:30</td><td>心齋橋・道頓堀（逛街購物、吃晚餐）</td><td>街拍、逛到自然飽</td></tr>
+<tr><td>19:00</td><td>道頓堀水上觀光船 或 Wonder Cruise</td><td>周遊券免費（原價 ¥2,000），依實際劃位時間搭乘，20 分</td></tr>
+<tr><td>21:30</td><td>戎橋固力果跑跑人合照 → 回民宿</td><td></td></tr>
+</table>
+<h3>景點導覽</h3>
+<p><strong>四天王寺｜</strong>西元 593 年聖德太子創建，比京都所有寺院都老的日本佛法元祖之地。中門、五重塔、金堂、講堂一直線排列的「四天王寺式伽藍」，是教科書級的飛鳥時代配置。本坊庭園是精緻的池泉迴游式庭園，可在此靜坐片刻。</p>
+<p><strong>通天閣｜</strong>大阪人的精神鐵塔。5 樓金色的福神 Billiken 腳底被遊客摸得發亮。想挑戰刺激的可玩 Tower Slider 高速溜滑梯，膽子更大則挑 Dive & Walk 高空漫步，三種體驗周遊券全包。</p>
+<p><strong>梅田空中庭園展望台｜</strong>兩棟大樓在 173 公尺高空被一個圓環抱住，搭乘懸空手扶梯穿越天空的瞬間，全團都會發出驚呼。免費入場限 15:00 前，13:40 抵達時間充裕。</p>
+<p><strong>道頓堀遊船｜</strong>從水面仰望固力果跑跑人與兩岸霓虹，船上導覽員的關西腔吐槽功力一流。抵達難波第一件事先去劃位，再回頭逛街，班次到了準時回來上船。</p>
+<div class="box-tip"><b>💡 周遊券 D1 回本試算</b>四天王寺 ¥300 ＋ 通天閣 ¥1,200 ＋ 空中庭園 ¥2,000 ＋ 道頓堀遊船 ¥2,000 ＝ ¥5,500/人<br>加上整日地鐵免費搭乘（約 ¥800），單日已值 ¥6,300——2 日券 ¥5,500 第一天就超值回本！</div>
+<table><tr><th>項目</th><th>說明</th><th>預估費用</th></tr>
+<tr><td>周遊券 2 日券</td><td>¥5,500 × 3（涵蓋兩日）</td><td>¥16,500</td></tr>
+<tr><td>三餐＋心齋橋小吃</td><td>¥3,000/人</td><td>約 ¥9,000</td></tr>
+<tr><td>心齋橋購物</td><td>彈性</td><td>依個人</td></tr>
+<tr><td><strong>合計（三人）</strong></td><td></td><td><strong>約 ¥25,500（含兩日票券）</strong></td></tr>
+</table>
+</div></div>
+
+<!-- CH8 Day4 -->
+<div id="ch8" class="wrap"><div class="chapter">
+<h2>第八章　Day 4（6/30 二）周遊券 D2：大阪城歷史 → 港區浪漫海景</h2>
+<table><tr><td style="width:80px;font-weight:600;">主題</td><td>大阪城御座船・天守閣 → 大阪水上巴士 → 咲洲宇宙塔展望台 → 天保山摩天輪</td></tr><tr><td style="font-weight:600;">導遊</td><td>硯</td></tr><tr><td style="font-weight:600;">票券</td><td>大阪周遊券 2 日券（第 2 日）</td></tr></table>
+<div class="spot-links">
+<a href="https://www.bring-you.info/zh-tw/osakacastle" target="_blank">大阪城御座船 <span class="tag tag-warn">免費・先取號</span></a>
+<a href="https://bobbytravel.tw/osaka-castle/" target="_blank">天守閣 <span class="tag tag-free">免費</span></a>
+<a href="https://mimigo.tw/aqualiner/" target="_blank">水上巴士 AQUALINER <span class="tag tag-free">免費</span></a>
+<a href="https://mimigo.tw/cosmo-tower/" target="_blank">咲洲宇宙塔 <span class="tag tag-free">免費</span></a>
+</div>
+<table><tr><th style="width:65px;">時間</th><th>行程</th><th>交通／備註</th></tr>
+<tr><td>09:15</td><td>抵達大阪城公園</td><td>地鐵谷町線谷町四丁目站，約 25 分</td></tr>
+<tr><td>09:15</td><td>⚠️ 第一時間先劃位「御座船」與「水上巴士」</td><td>兩項夏季旺季秒滿，到場立刻去取號</td></tr>
+<tr><td>10:00</td><td>大阪城御座船</td><td>周遊券免費（原價 ¥1,500），繞行護城河 20 分</td></tr>
+<tr><td>10:30</td><td>大阪城天守閣（步行登城參觀）</td><td>周遊券免費（原價 ¥600），含歷史展示＋黃金茶室</td></tr>
+<tr><td>12:00</td><td>大阪水上巴士 AQUALINER</td><td>周遊券免費（原價約 ¥1,800），60 分巡航，搭船休息吹冷氣</td></tr>
+<tr><td>12:50</td><td>午餐</td><td>大阪城公園 JO-TERRACE 商圈</td></tr>
+<tr><td>14:00</td><td>搭地鐵中央線前往港區</td><td>往宇宙廣場站／貿易中心前站，約 30 分</td></tr>
+<tr><td>14:40</td><td>咲洲宇宙塔展望台（賞百萬海景）</td><td>周遊券免費（原價 ¥1,000），55 樓 256 公尺</td></tr>
+<tr><td>16:30</td><td>天保山摩天輪（賞夕陽）</td><td>周遊券免費（原價 ¥900）</td></tr>
+<tr><td>18:30</td><td>晚餐：天保山市場街 浪速美食橫丁</td><td>港區海鮮或回難波</td></tr>
+<tr><td>20:00</td><td>返回天下茶屋</td><td></td></tr>
+</table>
+<h3>景點導覽</h3>
+<p><strong>大阪城御座船｜</strong>黃金打造的豐臣風格屋形船，繞行內護城河 20 分鐘。從水面仰望石垣與天守閣，才能體會「太閤的城」有多雄偉——這個角度是走路看不到的。夏天船班熱門，一到就先取號。</p>
+<p><strong>天守閣｜</strong>現在的天守是昭和重建的歷史博物館，8 樓展望台可眺望大阪平原。內部冷氣很強，正好避開正午烈日。看豐臣秀吉的黃金茶室複製品時，跟孩子們說說大阪夏之陣的故事吧。</p>
+<p><strong>大阪水上巴士 AQUALINER｜</strong>低扁船身專為鑽過大川的低矮橋樑設計，60 分鐘航程串起大阪城與中之島，是理解「水都大阪」最舒服的方式——坐著吹冷氣看城市，下午的疲勞瞬間恢復。先劃位再去逛天守閣，時間剛剛好。</p>
+<p><strong>咲洲宇宙塔展望台｜</strong>256 公尺、大阪府第一高的展望台，遊客比阿倍野 Harukas 少得多。360 度玻璃迴廊看明石海峽大橋、關西機場一字排開，黃昏時段是攝影師的私房機位。</p>
+<p><strong>天保山摩天輪｜</strong>與咲洲宇宙塔同在港區，傍晚 16:30 抵達正好趕上夕陽。乘坐摩天輪時天空由藍轉橙，大阪灣盡收眼底，是全日最美的一幕。</p>
+<div class="box-tip"><b>💡 周遊券 D2 回本試算</b>御座船 ¥1,500 ＋ 天守閣 ¥600 ＋ 水上巴士 ¥1,800 ＋ 宇宙塔 ¥1,000 ＋ 天保山摩天輪 ¥900 ＝ ¥5,800/人<br>兩日合計每人使用約 ¥12,100 票價，只花 ¥5,500——省下超過一半，這就是周遊券的玩法。</div>
+<table><tr><th>項目</th><th>說明</th><th>預估費用</th></tr>
+<tr><td>交通</td><td>周遊券涵蓋</td><td>¥0</td></tr>
+<tr><td>三餐</td><td>¥3,000/人</td><td>約 ¥9,000</td></tr>
+<tr><td>大阪城紀念品</td><td>御朱印、武將周邊</td><td>彈性</td></tr>
+<tr><td><strong>合計（三人）</strong></td><td></td><td><strong>約 ¥9,000</strong></td></tr>
+</table>
+</div></div>
+
+<!-- CH9 Day5-7 -->
+<div id="ch9" class="wrap"><div class="chapter">
+<h2>第九章　Day 5～7（7/1 三～7/3 五）居家上班日＋大阪之夜</h2>
+<table><tr><td style="width:80px;font-weight:600;">型態</td><td>白天：民宿遠端工作｜晚上：夜間限定行程</td></tr><tr><td style="font-weight:600;">重點</td><td>7/1 晚：愛染祭｜7/2 晚：慶生晚宴</td></tr></table>
+<h3>9.1 Day 5（7/1）夜：愛染祭——大阪夏祭的開幕戰</h3>
+<div class="spot-links"><a href="https://osaka.letsgojp.com/archives/354001/" target="_blank">愛染堂勝鬘院・愛染祭</a></div>
+<table><tr><th style="width:130px;">時間</th><th>行程</th><th>交通／備註</th></tr>
+<tr><td>09:00–18:30</td><td>民宿居家上班</td><td>附近超市採買自炊午餐</td></tr>
+<tr><td>18:30</td><td>出發 → 四天王寺前夕陽丘</td><td>谷町線，約 15 分</td></tr>
+<tr><td>19:00</td><td>愛染堂勝鬘院・愛染祭</td><td>參道屋台、寶惠駕籠遊行氣氛</td></tr>
+<tr><td>21:00</td><td>愛染七坂順遊（口繩坂等）</td><td>石坂夜燈，文學散步</td></tr>
+<tr><td>22:00</td><td>返回民宿</td><td></td></tr>
+</table>
+<p>愛染祭｜與天神祭、住吉祭並稱大阪三大夏祭，每年 6/30～7/2 在愛染堂勝鬘院舉行，宣告大阪夏天正式開始。祭典以「愛染娘」乘坐寶惠駕籠的遊行聞名，參道兩側屋台林立——章魚燒、刨冰、撈金魚，是最道地的日本夏夜。你們的行程恰好撞上正日，這是可遇不可求的緣分。愛染明王主掌「結緣與商售繁盛」，替家人求個緣結御守吧。</p>
+<h3>9.2 Day 6（7/2）夜：慶生晚宴</h3>
+<p>白天照常上班，晚上是這趟旅程的情感高潮——家族慶生。導遊推薦三個方向，依預算與氣氛挑選：</p>
+<ul>
+<li><strong>豪華版：</strong>阿倍野 Harukas 57 樓餐廳或北新地鐵板燒，邊吃和牛邊看夜景（每人 ¥8,000 起）。</li>
+<li><strong>道地版：</strong>難波「千房」或「美津の」大阪燒名店，熱鬧圍爐感最適合家族（每人 ¥2,500）。</li>
+<li><strong>溫馨版：</strong>黑門市場買海鮮回民宿自煮壽喜燒，加上便利商店蛋糕——長住旅行限定的幸福（每人 ¥2,000）。</li>
+</ul>
+<h3>9.3 Day 7（7/3）夜：自由探索</h3>
+<p>參考「大阪晚上 8 點後怎麼玩」清單：法善寺横丁的石板小路與夫婦善哉紅豆湯、戎橋夜拍、或在天下茶屋在地銭湯泡個澡，把上班的疲勞蒸掉。</p>
+<table><tr><th>項目</th><th>說明</th><th>預估費用</th></tr>
+<tr><td>愛染祭屋台＋御守</td><td>祭典夜</td><td>約 ¥6,000</td></tr>
+<tr><td>慶生晚宴</td><td>以道地版估</td><td>約 ¥9,000</td></tr>
+<tr><td>三日自炊＋雜費</td><td>超市採買</td><td>約 ¥12,000</td></tr>
+<tr><td><strong>合計（三人）</strong></td><td></td><td><strong>約 ¥27,000（三日合計）</strong></td></tr>
+</table>
+</div></div>
+
+<!-- CH10 Day8 京都 -->
+<div id="ch10" class="wrap"><div class="chapter">
+<h2>第十章　Day 8（7/4 六）京都一日：千年古都速寫</h2>
+<table><tr><td style="width:80px;font-weight:600;">主題</td><td>清水寺 → 八坂神社 → 花見小路 → 四條通 → 伏見稻荷大社</td></tr><tr><td style="font-weight:600;">導遊</td><td>笙</td></tr><tr><td style="font-weight:600;">步行量</td><td>★★★★★（約 20,000 步，穿好走的鞋）</td></tr></table>
+<div class="spot-links">
+<a href="https://www.bring-you.info/zh-tw/kiyomizudera" target="_blank">清水寺（¥500）</a>
+<a href="https://gogojp.tw/gion-hanamikoji/" target="_blank">八坂神社・花見小路</a>
+<a href="https://gototravel.tw/nishiki-market/" target="_blank">錦市場</a>
+<a href="https://letsgokyoto.com/fushimi-inari-taisha/" target="_blank">伏見稻荷大社（免費）</a>
+</div>
+<table><tr><th style="width:65px;">時間</th><th>行程</th><th>交通／備註</th></tr>
+<tr><td>07:30</td><td>天下茶屋出發 → 淀屋橋</td><td>御堂筋線（動物園前轉乘）</td></tr>
+<tr><td>08:00</td><td>京阪特急 → 清水五条</td><td>約 50 分，特急免費不用劃位</td></tr>
+<tr><td>09:00</td><td>清水寺（趁早！）</td><td>門票 ¥500，二三年坂順遊</td></tr>
+<tr><td>11:30</td><td>二年坂・產寧坂午餐＋甜點</td><td>湯豆腐或抹茶蕨餅</td></tr>
+<tr><td>13:00</td><td>八坂神社 → 花見小路</td><td>免費參拜，藝伎街白天散步</td></tr>
+<tr><td>14:30</td><td>四條通・錦市場逛街</td><td>京都的廚房，試吃天堂</td></tr>
+<tr><td>16:00</td><td>京阪本線 → 伏見稻荷站</td><td>約 10 分，¥220</td></tr>
+<tr><td>16:30</td><td>伏見稻荷大社・千本鳥居</td><td>免費，傍晚光線最美人最少</td></tr>
+<tr><td>18:30</td><td>稻荷參道吃晚餐（狐狸烏龍麵）</td><td></td></tr>
+<tr><td>19:30</td><td>京阪 → 淀屋橋 → 回民宿</td><td>約 21:00 抵達</td></tr>
+</table>
+<h3>景點導覽</h3>
+<p><strong>清水寺｜</strong>「清水舞台」懸空 13 公尺、不用一根釘子的木造結構，是日本建築的奇蹟。7 月的京都早上 9 點後就開始悶熱，務必第一站衝清水寺，9 點前的舞台幾乎是包場狀態。音羽瀑布三道水分別代表學業、戀愛、長壽——只能選一道喝，貪心喝兩道願望會失效，這是老導遊的忠告。</p>
+<p><strong>八坂神社・花見小路｜</strong>祇園的信仰中心，朱紅樓門就立在四條通的盡頭。一旁的花見小路是茶屋建築保存最完整的街道，白天遊客如織，但抬頭看那些「犬矢來」竹籬與簾子後的世界，仍能想像夜裡藝伎踏著木屐而過的聲音。請注意私有巷道禁止攝影的告示。</p>
+<p><strong>伏見稻荷大社｜</strong>上萬座朱紅鳥居沿著稻荷山蜿蜒而上，是全世界遊客票選第一的日本景點。導遊真心話：不必登頂！走到「四辻」展望點（約 40 分鐘）拍京都市景就足夠，傍晚 5 點後的千本鳥居人潮散去、光影斜長，是攝影的魔幻時刻。</p>
+<table><tr><th>項目</th><th>說明</th><th>預估費用</th></tr>
+<tr><td>大阪⇄京都交通＋市內</td><td>約 ¥1,800/人</td><td>¥5,400</td></tr>
+<tr><td>清水寺門票</td><td>¥500 × 3</td><td>¥1,500</td></tr>
+<tr><td>三餐＋甜點</td><td>¥4,000/人</td><td>約 ¥12,000</td></tr>
+<tr><td>御守・伴手禮</td><td>彈性</td><td>約 ¥3,000</td></tr>
+<tr><td><strong>合計（三人）</strong></td><td></td><td><strong>約 ¥22,000</strong></td></tr>
+</table>
+</div></div>
+
+<!-- CH11 Day9 天王寺 -->
+<div id="ch11" class="wrap"><div class="chapter">
+<h2>第十一章　Day 9（7/5 日）天王寺區：新舊大阪的交界</h2>
+<table><tr><td style="width:80px;font-weight:600;">主題</td><td>四天王寺 → 通天閣 → 新世界 → 阿倍野 Q's Mall</td></tr><tr><td style="font-weight:600;">導遊</td><td>笙</td></tr><tr><td style="font-weight:600;">步行量</td><td>★★★☆☆（區域集中，輕鬆走）</td></tr></table>
+<div class="spot-links">
+<a href="https://gogojp.tw/shitennoji/" target="_blank">四天王寺（¥300）</a>
+<a href="https://www.bring-you.info/zh-tw/tsutenkaku" target="_blank">通天閣（¥1,200）</a>
+<a href="https://bobbytravel.tw/shinsekai/" target="_blank">新世界串炸</a>
+<a href="https://mimigo.tw/q-s-mall/" target="_blank">阿倍野 Q's Mall</a>
+</div>
+<table><tr><th style="width:65px;">時間</th><th>行程</th><th>交通／備註</th></tr>
+<tr><td>09:00</td><td>民宿 → 四天王寺</td><td>谷町線四天王寺前夕陽丘，15 分</td></tr>
+<tr><td>09:30</td><td>四天王寺參拜</td><td>中心伽藍 ¥300，境內免費</td></tr>
+<tr><td>11:00</td><td>徒步往新世界（約 15 分）</td><td>穿過下町街區</td></tr>
+<tr><td>11:30</td><td>新世界午餐：元祖串炸</td><td>だるま等名店，醬汁禁二次沾！</td></tr>
+<tr><td>13:00</td><td>通天閣登塔</td><td>一般展望 ¥1,200，摸 Billiken 腳底</td></tr>
+<tr><td>14:30</td><td>新世界街區散步＋射的遊戲</td><td>昭和遊戲場懷舊體驗</td></tr>
+<tr><td>15:30</td><td>徒步或一站到天王寺</td><td>阿倍野 Q's Mall 逛街</td></tr>
+<tr><td>17:30</td><td>天王寺公園 てんしば 草地休息</td><td>黃昏野餐氣氛</td></tr>
+<tr><td>19:00</td><td>Q's Mall 美食街晚餐 → 回民宿</td><td>阪堺電車或地鐵，10 分</td></tr>
+</table>
+<h3>景點導覽</h3>
+<p><strong>四天王寺｜</strong>西元 593 年聖德太子創建，比京都所有寺院都老的日本佛法元祖之地。中門、五重塔、金堂、講堂一直線排列的「四天王寺式伽藍」，是教科書級的飛鳥時代配置。早上的境內只有鴿子與誦經聲，安靜得不像在大阪市中心。</p>
+<p><strong>通天閣｜</strong>大阪人的精神鐵塔，現在的第二代塔建於 1956 年。5 樓金色的福神 Billiken「比利肯」腳底被遊客摸得發亮——摸了會帶來好運。塔上看的不是最高的景，卻是最有「大阪味」的景：腳下就是新世界的霓虹招牌海。</p>
+<p><strong>新世界｜</strong>百年前以巴黎為藍本打造的娛樂街，如今是串炸的聖地。鐵則只有一條：醬汁缸是共用的，咬過的串絕對禁止回沾（二度漬け禁止）！用免費的高麗菜舀醬汁才是行家。</p>
+<table><tr><th>項目</th><th>說明</th><th>預估費用</th></tr>
+<tr><td>市內交通</td><td>¥400/人</td><td>¥1,200</td></tr>
+<tr><td>通天閣＋四天王寺</td><td>¥1,500/人</td><td>¥4,500</td></tr>
+<tr><td>串炸午餐＋晚餐</td><td>¥3,500/人</td><td>約 ¥10,500</td></tr>
+<tr><td><strong>合計（三人）</strong></td><td></td><td><strong>約 ¥16,200</strong></td></tr>
+</table>
+</div></div>
+
+<!-- CH12 Day10-11 -->
+<div id="ch12" class="wrap"><div class="chapter">
+<h2>第十二章　Day 10～11（7/6 一～7/7 二）連續居家上班日</h2>
+<table><tr><td style="width:80px;font-weight:600;">7/6（一）</td><td>居家上班｜晚：天神橋筋商店街（日本最長 2.6km 商店街，吃平價晚餐）</td></tr><tr><td style="font-weight:600;">7/7（二）</td><td>居家上班｜晚：自由探索</td></tr></table>
+<h3>12.1 Day 10（7/6）夜：天神橋筋商店街</h3>
+<table><tr><th style="width:130px;">時間</th><th>行程</th><th>交通／備註</th></tr>
+<tr><td>09:00–18:30</td><td>民宿居家上班</td><td>附近超市採買自炊午餐</td></tr>
+<tr><td>18:30</td><td>天下茶屋 → 天神橋筋六丁目</td><td>堺筋線直達，約 15 分</td></tr>
+<tr><td>19:00</td><td>天神橋筋商店街散步</td><td>日本最長 2.6km 商店街，傍晚最有生活感</td></tr>
+<tr><td>19:30</td><td>商店街晚餐</td><td>立吞居酒屋、烏龍麵、大阪燒任選</td></tr>
+<tr><td>20:30</td><td>南部の喫茶・甜點收尾</td><td>昭和老咖啡廳林立</td></tr>
+<tr><td>21:30</td><td>堺筋線返回天下茶屋</td><td></td></tr>
+</table>
+<h3>12.2 Day 11（7/7）夜：自由探索</h3>
+<table><tr><th style="width:130px;">時間</th><th>行程</th><th>交通／備註</th></tr>
+<tr><td>09:00–18:30</td><td>民宿居家上班</td><td></td></tr>
+<tr><td>18:30</td><td>自選：天水湯泡澡 → 東明飯店晚餐</td><td>下班後標準行程</td></tr>
+<tr><td>20:00</td><td>法善寺横丁（難波、地鐵 5 分）</td><td>石板小路、夫婦善哉紅豆湯</td></tr>
+<tr><td>21:30</td><td>戎橋夜拍・道頓堀散步</td><td>固力果跑跑人、霓虹橋夜景</td></tr>
+<tr><td>22:30</td><td>返回民宿</td><td></td></tr>
+</table>
+<div class="box-tip"><b>💡 兩個上班日的晚間補充選項</b>天神橋筋有全大阪密度最高的「立吞（站著喝）」居酒屋，¥500 一杯生啤＋小菜，下班族在地風景。<br>7/7 是七夕，大阪各商店街會掛起竹飾許願條——散步時記得拍照。</div>
+<table><tr><th>項目</th><th>說明</th><th>預估費用</th></tr>
+<tr><td>兩日交通＋餐飲</td><td>輕鬆上班日</td><td>約 ¥18,000</td></tr>
+<tr><td><strong>合計（三人）</strong></td><td></td><td><strong>約 ¥18,000</strong></td></tr>
+</table>
+</div></div>
+
+<!-- CH13 Day12 堺市 -->
+<div id="ch13" class="wrap"><div class="chapter">
+<h2>第十三章　Day 12（7/8 三）堺市＋大正區：古墳、路面電車與小沖繩</h2>
+<table><tr><td style="width:80px;font-weight:600;">主題</td><td>仁德天皇陵 → 大仙公園 → 利晶之杜 → 阪堺電車 → 住吉大社 → 渡船 → 大正區</td></tr><tr><td style="font-weight:600;">導遊</td><td>雄（本日是全程最有深度的路線）</td></tr></table>
+<div class="spot-links">
+<a href="https://www.sakai-tcb.or.jp/zh-tw/spot/detail/126" target="_blank">仁德天皇陵古墳（免費）</a>
+<a href="https://gogojp.tw/sumiyoshitaisha/" target="_blank">住吉大社（免費）</a>
+<a href="https://smilevivi.com/hankai-sumiyoshitaisha/" target="_blank">阪堺路面電車</a>
+<a href="https://zh.wikipedia.org/wiki/大仙陵古坟" target="_blank">大仙古墳 Wikipedia</a>
+</div>
+<table><tr><th style="width:65px;">時間</th><th>行程</th><th>交通／備註</th></tr>
+<tr><td>08:30</td><td>天下茶屋 → JR 阪和線百舌鳥站</td><td>天王寺轉乘，約 30 分</td></tr>
+<tr><td>09:00</td><td>仁德天皇陵古墳（拜所）</td><td>世界遺產，免費</td></tr>
+<tr><td>09:45</td><td>大仙公園・百舌鳥古墳群遊客中心</td><td>8K 影像看古墳全貌</td></tr>
+<tr><td>11:00</td><td>さかい利晶の杜（利休與晶子紀念館）</td><td>門票 ¥300，茶道體驗可加購</td></tr>
+<tr><td>12:30</td><td>午餐：天婦羅大吉（堺東店）</td><td>漁師風豪邁天婦羅名店</td></tr>
+<tr><td>14:00</td><td>阪堺路面電車 → 住吉鳥居前</td><td>一日券 ¥700 或單程 ¥230</td></tr>
+<tr><td>14:30</td><td>住吉大社參拜</td><td>免費，渡過反橋（太鼓橋）</td></tr>
+<tr><td>16:00</td><td>電車＋徒步 → 千歲渡船場</td><td>免費渡船過木津川</td></tr>
+<tr><td>16:30</td><td>大正區散步 → IKEA 鶴町</td><td>吹冷氣、瑞典肉丸點心</td></tr>
+<tr><td>18:00</td><td>TUGBOAT TAISHO 河畔餐飲市集</td><td>看河景喝一杯</td></tr>
+<tr><td>19:00</td><td>晚餐：沖縄料理うすぱれ豊年</td><td>大正區＝小沖繩，苦瓜炒蛋必點</td></tr>
+<tr><td>21:00</td><td>巴士或地鐵返回天下茶屋</td><td></td></tr>
+</table>
+<h3>景點導覽</h3>
+<p><strong>仁德天皇陵｜</strong>墳長 486 公尺、世界最大級的鑰匙孔形古墳，與金字塔、秦始皇陵並稱世界三大墳墓。地面上只能看到一片神祕森林與濠溝——正因「看不見全貌」，站在拜所前的想像反而更震撼。先去遊客中心看空拍影像再來拜所，順序對了感受完全不同。</p>
+<p><strong>さかい利晶の杜｜</strong>堺出身的兩位巨人：茶聖千利休與歌人與謝野晶子的紀念館。堺曾是戰國時代的自由貿易之都，「茶道」就在這些商人的會客室裡誕生。有興趣可加購立禮茶席體驗（約 ¥500），喝一碗正統抹茶。</p>
+<p><strong>住吉大社與阪堺電車｜</strong>全日本 2,300 座住吉神社的總本社，本殿四棟皆為國寶「住吉造」——比佛教傳來更古老的建築樣式。搭著大阪僅存的路面電車叮叮噹噹而來，本身就是時光旅行。反橋坡度極陡，「渡橋即淨身」，扶好慢慢走。</p>
+<p><strong>渡船與大正區｜</strong>大阪市至今保留 8 條免費公營渡船，是水都最後的日常風景。千歲渡船 3 分鐘的航程，載的多是騎腳踏車的在地人。對岸的大正區是沖繩移民聚落，街上飄著三線琴音與海葡萄——一天之內從古墳走到小沖繩，這就是這條路線的魔力。</p>
+<table><tr><th>項目</th><th>說明</th><th>預估費用</th></tr>
+<tr><td>JR＋阪堺電車＋地鐵</td><td>約 ¥1,400/人</td><td>¥4,200</td></tr>
+<tr><td>利晶之杜門票</td><td>¥300 × 3</td><td>¥900</td></tr>
+<tr><td>天婦羅午餐＋沖繩晚餐</td><td>¥4,500/人</td><td>約 ¥13,500</td></tr>
+<tr><td><strong>合計（三人）</strong></td><td></td><td><strong>約 ¥18,600</strong></td></tr>
+</table>
+</div></div>
+
+<!-- CH14 Day13 宇治奈良 -->
+<div id="ch14" class="wrap"><div class="chapter">
+<h2>第十四章　Day 13（7/9 四）宇治・奈良一日：平等院・千本鳥居</h2>
+<table><tr><td style="width:80px;font-weight:600;">主題</td><td>宇治平等院 → 宇治川散步 → 奈良公園 → 東大寺 → 伏見稻荷（可選）</td></tr><tr><td style="font-weight:600;">導遊</td><td>硯</td></tr><tr><td style="font-weight:600;">步行量</td><td>★★★★☆（約 18,000 步，穿好走的鞋）</td></tr></table>
+<div class="spot-links">
+<a href="https://japantravel.co/關西/京都/平等院/" target="_blank">平等院鳳凰堂（¥700）</a>
+<a href="https://osaka.letsgojp.com/archives/491869/" target="_blank">宇治・中村藤吉本店</a>
+<a href="https://gototravel.tw/todaiji/" target="_blank">東大寺（¥800）</a>
+<a href="https://www.byodoin.or.jp/ch2/" target="_blank">平等院官方中文頁</a>
+</div>
+<table><tr><th style="width:65px;">時間</th><th>行程</th><th>交通／備註</th></tr>
+<tr><td>07:45</td><td>天下茶屋 → 難波 → 近鐵大和西大寺方向</td><td>近鐵奈良線，車程合計約 80 分</td></tr>
+<tr><td>09:00</td><td>轉近鐵京都線 → 宇治（或 JR 宇治線）</td><td></td></tr>
+<tr><td>09:30</td><td>平等院鳳凰堂</td><td>門票 ¥700，10 円硬幣上的建築</td></tr>
+<tr><td>11:00</td><td>宇治川散步・中村藤吉本店</td><td>抹茶聖代必吃，先抽號碼牌再去逛神社</td></tr>
+<tr><td>12:30</td><td>宇治上神社（世界遺產）順遊</td><td>免費，日本最古神社本殿</td></tr>
+<tr><td>13:30</td><td>JR 奈良線 → 奈良</td><td>約 35 分</td></tr>
+<tr><td>14:15</td><td>奈良公園餵鹿</td><td>鹿仙貝 ¥200/份</td></tr>
+<tr><td>15:00</td><td>東大寺大佛殿</td><td>門票 ¥800，世界最大木造建築</td></tr>
+<tr><td>16:30</td><td>春日大社參道・若草山遠眺</td><td>石燈籠之路</td></tr>
+<tr><td>17:30</td><td>東向商店街晚餐：柿葉壽司</td><td></td></tr>
+<tr><td>18:45</td><td>近鐵奈良 → 難波（快速急行 50 分）</td><td>約 20:00 回民宿</td></tr>
+</table>
+<h3>景點導覽</h3>
+<p><strong>平等院鳳凰堂｜</strong>掏出口袋裡的 10 円硬幣對照眼前的建築——一模一樣。平安時代貴族想像中的西方極樂世界，就漂浮在阿字池上。鳳翔館博物館內的雲中供養菩薩像，是日本佛教藝術的巔峰之作，別錯過。</p>
+<p><strong>中村藤吉本店｜</strong>創業 160 年的宇治茶老舖，竹筒盛裝的「生茶ゼリイ」抹茶凍是排隊也值得的傳奇。先到店門口抽號碼牌，再去逛宇治上神社，時間剛剛好——這是導遊的排隊攻略。</p>
+<p><strong>奈良公園與東大寺｜</strong>1,200 頭野生鹿是春日大社的神使。餵食心法：仙貝藏在背後、先讓鹿鞠躬再給，否則會被一群鹿包圍突擊。東大寺大佛高 15 公尺，柱子上的「大佛鼻孔洞」鑽過去保平安——19 歲的硯還鑽得過去，54 歲的雄就在旁邊拍照吧。</p>
+<table><tr><th>項目</th><th>說明</th><th>預估費用</th></tr>
+<tr><td>大阪⇄宇治⇄奈良交通</td><td>約 ¥2,500/人</td><td>¥7,500</td></tr>
+<tr><td>平等院＋東大寺門票</td><td>¥1,500/人</td><td>¥4,500</td></tr>
+<tr><td>三餐＋抹茶甜點＋鹿仙貝</td><td>¥4,000/人</td><td>約 ¥12,000</td></tr>
+<tr><td><strong>合計（三人）</strong></td><td></td><td><strong>約 ¥24,000</strong></td></tr>
+</table>
+</div></div>
+
+<!-- CH15 Day14 退房+機場 -->
+<div id="ch15" class="wrap"><div class="chapter">
+<h2>第十五章　Day 14（7/10 五）退房日：中之島散步 → 夜宿關西機場</h2>
+<table><tr><td style="width:80px;font-weight:600;">主題</td><td>民宿退房 → 行李寄放 → 中之島水都散步 → 告別晚宴 → 進駐 KIX 過夜</td></tr><tr><td style="font-weight:600;">導遊</td><td>雄</td></tr><tr><td style="font-weight:600;">⚠️ 關鍵</td><td>今晚不回民宿！所有行李隨身帶出，晚間直接搭南海電鐵進機場</td></tr></table>
+<div class="spot-links">
+<a href="https://www.bring-you.info/zh-tw/nakanoshima" target="_blank">童書之森（免費）</a>
+<a href="https://gogojp.tw/osaka-central-public-hall/" target="_blank">大阪市中央公會堂（免費）</a>
+<a href="https://mimigo.tw/nakanoshima-library/" target="_blank">中之島圖書館（免費）</a>
+</div>
+<table><tr><th style="width:65px;">時間</th><th>行程</th><th>交通／備註</th></tr>
+<tr><td>07:30</td><td>起床、最終打包、垃圾分類</td><td>前一晚先完成 9 成打包</td></tr>
+<tr><td>09:00</td><td>民宿退房（依房東指示），留小禮物</td><td>全部行李帶走</td></tr>
+<tr><td>09:30</td><td>天下茶屋 → 難波，行李寄放</td><td>南海難波站大型置物櫃 ¥700～1,000/個</td></tr>
+<tr><td>10:15</td><td>難波 → 堺筋線北濱站</td><td>輕裝出發，約 10 分</td></tr>
+<tr><td>10:45</td><td>童書之森 中之島</td><td>安藤忠雄設計，免費（建議線上預約）</td></tr>
+<tr><td>12:00</td><td>難波橋（獅子橋）→ 北濱河岸午餐</td><td>RETRO 咖啡或川沿露台店</td></tr>
+<tr><td>13:30</td><td>大阪市中央公會堂</td><td>免費參觀部分區域，紅磚傑作</td></tr>
+<tr><td>14:30</td><td>大阪府立中之島圖書館</td><td>免費，文藝復興式圓頂大廳</td></tr>
+<tr><td>15:30</td><td>中之島公園・北濱古典建築慢拍</td><td>為旅程留白</td></tr>
+<tr><td>17:00</td><td>返回難波：最後採買（藥妝補貨）</td><td>戰利品直接裝進托運袋</td></tr>
+<tr><td>18:30</td><td>告別晚宴：道頓堀大阪燒或一蘭</td><td>吃飽一點，機場深夜選擇少</td></tr>
+<tr><td>20:30</td><td>南海難波站取行李、整理托運</td><td>行李秤上場！每件 ≤20kg</td></tr>
+<tr><td>21:15</td><td>南海空港急行 難波 → 關西機場 T1</td><td>約 45 分，¥970/人</td></tr>
+<tr><td>22:10</td><td>抵達 KIX T1，確認過夜據點</td><td>二樓出境大廳長椅或付費 Lounge</td></tr>
+<tr><td>23:00</td><td>盥洗、輪流休息</td><td>貴重物品貼身，行李上 AirTag 鎖好</td></tr>
+</table>
+<h3>景點導覽</h3>
+<p><strong>童書之森 中之島｜</strong>建築大師安藤忠雄設計並捐贈給大阪的兒童圖書館，清水模弧牆上滿滿是書的峽谷。即使團裡沒有小孩，這個空間本身就值得朝聖——它代表了大阪這座商人之城最溫柔的一面。</p>
+<p><strong>大阪市中央公會堂｜</strong>1918 年落成的紅磚新文藝復興建築，由一位股票經紀人捐出全部家產興建。免費區域可看挑高大廳，運氣好還能遇上開放參觀日。</p>
+<p><strong>中之島圖書館與北濱｜</strong>住友家捐建的石造圖書館，推開門是圓頂下的迴旋梯——很多人說這裡像走進歐洲。周邊北濱是大阪的老金融街，明治大正洋樓林立，用優雅收尾十五天的城市行程。</p>
+<div class="box-tip">
+<b>💡 機場過夜實戰指南</b>
+▶ 過夜地點：KIX T1 24 小時開放。二樓國際出境大廳與一樓北端有長椅；想躺平可用「KIX Airport Lounge」（Aeroplaza 2F，24h，約 ¥620/時，含飲料吧、淋浴另計）——三人可輪班：兩人顧行李打盹、一人進去洗澡，輪流補眠。<br>
+▶ Aeroplaza 同棟還有 First Cabin 膠囊旅館，若當晚還有空房（約 ¥5,000～6,000/人）是升級選項，可現場詢問。<br>
+▶ 補給：T1 便利商店（Lawson）24 小時營業，先買隔天早餐與飲水——樂桃機上無餐點。<br>
+▶ 凌晨溫度：機場冷氣強，薄外套（攜帶清單裡有）正是為今晚準備的。<br>
+▶ 末班車保險：難波發車的南海末班約 23 時許，但別賭末班——照表 21:15 出發最穩。
+</div>
+<table><tr><th>項目</th><th>說明</th><th>預估費用</th></tr>
+<tr><td>置物櫃 × 3</td><td>難波站大型櫃</td><td>約 ¥2,400</td></tr>
+<tr><td>市內交通＋南海往機場</td><td>約 ¥1,600/人</td><td>¥4,800</td></tr>
+<tr><td>午餐＋咖啡＋告別晚宴</td><td>¥5,000/人</td><td>約 ¥15,000</td></tr>
+<tr><td>機場 Lounge（輪流 2～3 小時）</td><td>彈性使用</td><td>約 ¥4,000～6,000</td></tr>
+<tr><td><strong>合計（三人）</strong></td><td></td><td><strong>約 ¥26,000～28,000</strong></td></tr>
+</table>
+</div></div>
+
+<!-- CH16 Day15 回國 -->
+<div id="ch16" class="wrap"><div class="chapter">
+<h2>第十六章　Day 15（7/11 六）回國日：從機場醒來，從容登機</h2>
+<table><tr><td style="width:80px;font-weight:600;">航班</td><td>樂桃 MM023｜KIX T2 07:55 → TPE 09:55</td></tr><tr><td style="font-weight:600;">托運</td><td>20kg × 3 件已購</td></tr><tr><td style="font-weight:600;">優勢</td><td>已在機場過夜——本日零趕車風險，全程從容</td></tr></table>
+<table><tr><th style="width:65px;">時間</th><th>行程</th><th>交通／備註</th></tr>
+<tr><td>05:00</td><td>起身、盥洗、Lawson 買早餐</td><td>順便買機上的飲食</td></tr>
+<tr><td>05:30</td><td>T1 → T2 免費接駁巴士</td><td>1 樓巴士站，約 7～10 分一班，車程 10 分</td></tr>
+<tr><td>05:50</td><td>抵達 T2，樂桃櫃台報到、托運</td><td>開櫃即辦，最早辦完最輕鬆</td></tr>
+<tr><td>06:30</td><td>安檢、出境</td><td>T2 規模小，速度快</td></tr>
+<tr><td>06:50</td><td>登機口候機、吃早餐</td><td>T2 國際線商店不多，早餐先備好</td></tr>
+<tr><td>07:25</td><td>登機</td><td></td></tr>
+<tr><td>07:55</td><td>MM023 起飛</td><td>在機上補眠</td></tr>
+<tr><td>09:55</td><td>抵達桃園 T1，入境</td><td>歡迎回家！</td></tr>
+</table>
+<div class="box-tip">
+<b>💡 導遊最後叮嚀</b>
+1. T1→T2 接駁巴士是本日唯一的「移動環節」，05:30 前到巴士站即可，清晨班次正常行駛。<br>
+2. 行李在前一晚已於難波站秤重整理完畢，今早只管推去櫃台。<br>
+3. 退稅商品未拆封放托運或手提皆可，護照內退稅單據出境時可能查驗。<br>
+4. 機場過夜後精神難免疲憊——上機就睡，回到台北才 10 點，下午還能好好補眠。
+</div>
+</div></div>
+
+<!-- APPENDIX A 預算 -->
+<div id="appA" class="wrap"><div class="chapter">
+<h2>附錄 A　總預算試算（三人）</h2>
+<table><tr><th>項目</th><th>說明</th><th>金額</th></tr>
+<tr><td>住宿（已付）</td><td>Airbnb 14 晚</td><td>NT$15,911</td></tr>
+<tr><td>機票（已付）</td><td>亞航去程＋樂桃回程＋托運</td><td>（依實際購票額）</td></tr>
+<tr><td>大阪周遊券 2 日 × 3</td><td>6/29–30</td><td>¥16,500</td></tr>
+<tr><td>ICOCA 儲值 × 3</td><td>¥5,000/人</td><td>¥15,000</td></tr>
+<tr><td>各日餐飲＋門票＋市內交通</td><td>依各章合計</td><td>約 ¥150,000</td></tr>
+<tr><td>eSIM × 3（已購）</td><td>Docomo IIJ 10GB｜出發當天機場掃 QR Code 安裝，落地後開啟數據漫遊</td><td>已完成</td></tr>
+<tr><td>保險（已購）</td><td>旅平險</td><td>已完成</td></tr>
+<tr><td>購物・伴手禮預備金</td><td>彈性</td><td>¥30,000～</td></tr>
+</table>
+<p style="margin-top:12px;">結論：現金 15 萬日圓配置恰當——日常餐飲門票以現金＋ICOCA 支應，大額購物刷卡。建議每人身上分散放置現金，雄保管大鈔、笙硯各帶 2 萬日圓零用。</p>
+</div></div>
+
+<!-- APPENDIX B 待辦 -->
+<div id="appB" class="wrap"><div class="chapter">
+<h2>附錄 B　行前待辦總表</h2>
+<ul class="checklist">
+<li><span class="ck done">✓</span><span>回程托運行李加購（20kg × 3）</span><span class="ck-who">雄</span></li>
+<li><span class="ck">$</span><span>托運行李袋 × 3 購買</span><span class="ck-who">雄・進行中</span></li>
+<li><span class="ck"></span><span>周遊券購買：Klook/KKday 購買 2 日券電子票 × 3</span><span class="ck-who">硯</span></li>
+<li><span class="ck done">✓</span><span>弟護照拍照</span><span class="ck-who">硯</span></li>
+<li><span class="ck"></span><span>影印護照、民宿資料（出發前三日完成）</span><span class="ck-who">雄</span></li>
+<li><span class="ck"></span><span>每人大頭照 × 2（備掛失補件用）</span><span class="ck-who">雄笙硯</span></li>
+<li><span class="ck done">✓</span><span>eSIM × 3（Docomo IIJ 10GB）已購｜□ 出發當天機場掃 QR Code 完成安裝</span><span class="ck-who">雄</span></li>
+<li><span class="ck done">✓</span><span>關西機場⇄大阪交通確認（南海電鐵直達，不必預購）</span><span class="ck-who">雄</span></li>
+<li><span class="ck"></span><span>手機西瓜卡（ICOCA）¥5,000/人（出發前手機開卡）</span><span class="ck-who">笙硯</span></li>
+<li><span class="ck"></span><span>換日幣 15 萬（留意匯率分批換）</span><span class="ck-who">雄</span></li>
+<li><span class="ck"></span><span>全支付・街口支付綁定</span><span class="ck-who">笙硯</span></li>
+<li><span class="ck"></span><span>入境 QR Code（Visit Japan Web）出發前一週填妥</span><span class="ck-who">雄笙硯</span></li>
+<li><span class="ck"></span><span>小禮物準備（給民宿房東）</span><span class="ck-who">雄</span></li>
+<li><span class="ck"></span><span>前往桃園機場交通確認</span><span class="ck-who">雄笙</span></li>
+<li><span class="ck done">✓</span><span>保險</span><span class="ck-who">雄</span></li>
+<li><span class="ck"></span><span>國際駕照備用</span><span class="ck-who">雄</span></li>
+<li><span class="ck done">✓</span><span>聯絡民宿</span><span class="ck-who">雄</span></li>
+</ul>
+</div></div>
+
+<!-- APPENDIX C 打包 -->
+<div id="appC" class="wrap"><div class="chapter">
+<h2>附錄 C　攜帶物品檢查表</h2>
+<div class="pack-grid">
+<div class="pack-col"><h4>📋 證件金錢</h4><ul>
+<li>護照＋影本</li><li>健保卡</li><li>信用卡</li>
+<li>日幣現金</li><li>大頭照 × 2</li><li>列印資料</li><li>訂房資訊</li>
+</ul></div>
+<div class="pack-col"><h4>📱 3C 用品</h4><ul>
+<li>手機＋eSIM</li><li class="highlight">手機背帶 ★</li>
+<li>行動電源（手提！）</li><li>充電器／線</li>
+<li>耳機</li><li>筆電＋電源＋周邊</li><li>AirTag（放行李）</li>
+</ul></div>
+<div class="pack-col"><h4>👕 衣物</h4><ul>
+<li>上衣（5～6 件）</li><li>褲子（3 件）</li>
+<li>內衣褲、襪子</li><li>睡衣</li>
+<li>薄外套（冷氣房用）</li><li>帽子</li><li>摺疊傘</li><li>拖鞋</li>
+</ul></div>
+<div class="pack-col"><h4>💊 藥品雜物</h4><ul>
+<li>常備藥</li><li>OK 繃</li><li>CDKMg 保健品</li>
+<li>胃藥（胃酸）</li><li>濕紙巾、口罩</li>
+<li>小毛巾、牙刷</li><li>梳子、眼罩、筆</li>
+<li>購物袋、行李秤</li>
+</ul></div>
+</div>
+<div class="box-tip" style="margin-top:14px;">
+<b>💡 打包心法（去程無托運版）</b>
+去程只有手提 7kg：衣物帶 3 天份就好，民宿長住可洗衣；藥品、3C 優先。<br>
+回程有 60kg 托運額度：空的軟式行李袋（待辦第 2 項）摺好放手提箱帶去，回程裝戰利品。<br>
+液體（牙膏、保養品）去程買旅行瓶裝或到日本藥妝店補貨——這正是去程不托運的最佳策略。
+</div>
+</div></div>
+
+<!-- APPENDIX D 緊急聯絡 -->
+<div id="appD" class="wrap"><div class="chapter">
+<h2>附錄 D　緊急聯絡與實用資訊</h2>
+<table>
+<tr><td style="width:160px;font-weight:600;">日本報警</td><td>110（警察）／119（救護・消防）</td></tr>
+<tr><td style="font-weight:600;">台北駐大阪辦事處</td><td>+81-6-6443-8481（急難救助：+81-90-8794-4568）</td></tr>
+<tr><td style="font-weight:600;">外交部旅外急難</td><td>+886-800-085-095</td></tr>
+<tr><td style="font-weight:600;">關西機場航班資訊</td><td><a href="https://kansai-airport.or.jp" target="_blank">kansai-airport.or.jp</a></td></tr>
+<tr><td style="font-weight:600;">大阪周遊券官網</td><td><a href="https://osaka-amazing-pass.com/cht" target="_blank">osaka-amazing-pass.com/cht</a></td></tr>
+<tr><td style="font-weight:600;">民宿房東</td><td>透過 Airbnb App 訊息聯繫（已完成行前聯絡）</td></tr>
+<tr><td style="font-weight:600;">旅途守則</td><td>三人分開行動時，以 LINE 群組回報位置；集合遲到以「最近車站的剪票口」為預設集合點。</td></tr>
+</table>
+</div></div>
+
+<footer>
+<div class="wrap">
+  <p>2026 熊聲厭父子仨・大阪漫遊十五日</p>
+  <p style="margin-top:6px;">最後更新：<span id="ud"></span> ｜ 資深導遊監修版</p>
+  <p style="margin-top:6px;">—— 祝旅途平安，滿載而歸 ——</p>
+  <script>document.getElementById('ud').textContent=new Date().toLocaleDateString('zh-TW');</script>
+</div>
+</footer>
+</body>
+</html>
